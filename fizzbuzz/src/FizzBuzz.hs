@@ -1,38 +1,43 @@
-module FizzBuzz where 
+module FizzBuzz where
 
-    fizzbuzz :: Int -> String
-    fizzbuzz n  = defNumero n
-    --  | n `mod` 3 == 0 && n `mod` 5 == 0     = "fizzbuzz"
-    --  | otherwise                            = defNumero n
- 
+import Data.List
 
-    menorQue20 :: Int -> String
-    menorQue20 n 
-        | n > 0 && n < 20 =
-        let answers = words("uno dos tres cuatro cinco seis siete ocho nueve diez " ++   
-                            "once doce trece catorce quince diesciseis " ++ 
-                            "diescisiente diesciocho diescinueve")
-        in answers !! (n-1) 
+fizzbuzz :: Int -> String
+fizzbuzz n = defNumero n
 
-    decenas :: Int -> String 
-    decenas n
-        | n == 20 = "veninte"
-        | n >= 2 && n < 10 =
-            answers !! (n - 2) ++ " y " ++ menorQue20 (n `mod` 10)
-            where 
-                answers = words ("veinti treinta cuarenta cincuenta sesenta setenta ochenta noventa")
+menorQue20 :: Int -> String
+menorQue20 n
+    | n >= 0 && n < 20 =
+        let answers = words ("cero uno dos tres cuatro cinco seis siete ocho nueve diez " ++
+                             "once doce trece catorce quince dieciseis " ++
+                             "diecisiete dieciocho diecinueve")
+        in answers !! (n)
 
-    centenas :: Int -> String
-    centenas n
-        | n == 100 = "cien"
-        | n >= 1 && n <=10 =
-            answers !! (n - 2) 
-            where 
-                answers = words ("ciento doscentenas trescentenas cuatrocentenas quinientos seiscentenas setecentenas ochocentenas novecentenas mil")
+decenas :: Int -> String
+decenas n
+    | n == 20 = "veinte"
+    | n < 30  =
+        answers !! 0 ++ "" ++ menorQue20 (mod n 10)
+    | n >= 30 && n < 100 && mod n 10 == 0 =
+        answers !! (div n 10 - 2)
+    | otherwise =
+        answers !! (div n 10 - 2) ++ " y " ++ menorQue20 (mod n 10)
+    where
+        answers = words ("veinti treinta cuarenta cincuenta sesenta setenta ochenta noventa")
 
-    defNumero :: Int -> String
-    defNumero n
-        | 1 <= n && n < 20                 = menorQue20 n
-        | n < 100                           = decenas n
-        -- | n > 100             = centenas (n `div` 10) ++ " " ++ menorQue20 (n `mod` 10)
-        -- | n == 100                          = "one hundred"
+centenas :: Int -> String
+centenas n
+    | n == 100 = "cien"
+    | n > 100 && n <= 1000 && mod n 100 == 0 =
+        answers !! (div n 100 - 1)
+    | otherwise =
+        answers !! (div n 100 - 1) ++ " " ++ defNumero (mod n 100)
+    where
+        answers = words ("ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos mil")
+
+defNumero :: Int -> String
+defNumero n
+    | n < 20 = menorQue20 n
+    | n < 100 = decenas n
+    | n <= 1000 = centenas n
+    | otherwise = "Número fuera de rango"
