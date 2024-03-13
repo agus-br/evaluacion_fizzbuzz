@@ -5,6 +5,16 @@ import Data.List
 fizzbuzz :: Int -> String
 fizzbuzz n = defNumero n
 
+ --Identificar si un numero es primo true/false
+ isPrime :: Int -> Bool
+ isPrime n
+    | n <= 1 = False  -- Los números menores o iguales a 1 no son primos
+    | otherwise = not $ any (\x -> n `mod` x == 0) [2..intSqrt n]
+    where
+        -- Raíz cuadrada entera
+        intSqrt :: Int -> Int
+        intSqrt = floor . sqrt . fromIntegral
+
 menorQue20 :: Int -> String
 menorQue20 n
     | n >= 0 && n < 20 =
