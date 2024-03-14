@@ -5,7 +5,7 @@ import Data.List
 fizzbuzz :: Int -> String
 fizzbuzz n  
     | isPrime n  == True = "FizzBuzz!"
-    | otherwise = defNumero n
+    | otherwise = nombrar n
 
 --Identificar si un numero es primo true/false
 isPrime :: Int -> Bool
@@ -43,7 +43,7 @@ centenas n
     | n > 100 && n < 1000 && mod n 100 == 0 =
         answers !! (div n 100 - 1)
     | otherwise =
-        answers !! (div n 100 - 1) ++ " " ++ defNumero (mod n 100)
+        answers !! (div n 100 - 1) ++ " " ++ nombrar (mod n 100)
     where
         answers = words ("ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos")
 
@@ -51,12 +51,12 @@ miles :: Int -> String
 miles n
     | n == 1000 = "mil"
     | n > 1000 && n < 2000 =
-        "mil " ++ defNumero (mod n 1000)
+        "mil " ++ nombrar (mod n 1000)
     | n > 1000 && n < 1000000 =
-        defNumero (div n 1000) ++ " mil " ++ defNumero (mod n 1000)
+        nombrar (div n 1000) ++ " mil " ++ nombrar (mod n 1000)
 
-defNumero :: Int -> String
-defNumero n
+nombrar :: Int -> String
+nombrar n
     | n < 20 = menorQue20 n
     | n < 100 = decenas n
     | n < 1000 = centenas n
