@@ -3,11 +3,13 @@ module FizzBuzz where
 import Data.List
 
 fizzbuzz :: Int -> String
-fizzbuzz n = defNumero n
+fizzbuzz n  
+    | isPrime n  == True = "FizzBuzz!"
+    | otherwise = defNumero n
 
- --Identificar si un numero es primo true/false
- isPrime :: Int -> Bool
- isPrime n
+--Identificar si un numero es primo true/false
+isPrime :: Int -> Bool
+isPrime n
     | n <= 1 = False  -- Los números menores o iguales a 1 no son primos
     | otherwise = not $ any (\x -> n `mod` x == 0) [2..intSqrt n]
     where
@@ -38,24 +40,25 @@ decenas n
 centenas :: Int -> String
 centenas n
     | n == 100 = "cien"
-    | n > 100 && n <= 1000 && mod n 100 == 0 =
+    | n > 100 && n < 1000 && mod n 100 == 0 =
         answers !! (div n 100 - 1)
     | otherwise =
         answers !! (div n 100 - 1) ++ " " ++ defNumero (mod n 100)
     where
-        answers = words ("ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos mil")
+        answers = words ("ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos")
 
 miles :: Int -> String
 miles n
     | n == 1000 = "mil"
     | n > 1000 && n < 2000 =
         "mil " ++ defNumero (mod n 1000)
-    | n > 1000 && n < 100000 =
+    | n > 1000 && n < 1000000 =
         defNumero (div n 1000) ++ " mil " ++ defNumero (mod n 1000)
 
 defNumero :: Int -> String
 defNumero n
     | n < 20 = menorQue20 n
     | n < 100 = decenas n
-    | n <= 1000 = centenas n
-    | otherwise = "Número fuera de rango"
+    | n < 1000 = centenas n
+    | n < 1000000 = miles n
+    | otherwise = "un millon"
