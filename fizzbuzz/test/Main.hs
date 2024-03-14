@@ -7,7 +7,8 @@ import FizzBuzz
 fizzBuzzSuite :: TestTree
 fizzBuzzSuite = testGroup "FizzBuzz tests"
                 [ testGroup "Pruba de numeros entre 0 y 30" $
-                    [ testCase "0" $ menorQue20 0 @?= "cero"
+                    [ 
+                    testCase "0" $ menorQue20 0 @?= "cero"
                     , testCase "1" $ menorQue20 1 @?= "uno"
                     , testCase "2" $ menorQue20 2 @?= "dos"
                     , testCase "3" $ menorQue20 3 @?= "tres"
@@ -27,7 +28,8 @@ fizzBuzzSuite = testGroup "FizzBuzz tests"
                     , testCase "30" $ decenas 30 @?= "treinta"
                     ]
                 , testGroup "Prueba de numeros entre 16 y 29" $
-                    [ testCase "16" $ menorQue20 16 @?= "dieciseis"
+                    [ 
+                    testCase "16" $ menorQue20 16 @?= "dieciseis"
                     , testCase "17" $ menorQue20 17 @?= "diecisiete"
                     , testCase "18" $ menorQue20 18 @?= "dieciocho"
                     , testCase "20" $ decenas 20 @?= "veinte"
@@ -39,7 +41,8 @@ fizzBuzzSuite = testGroup "FizzBuzz tests"
                     , testCase "29" $ decenas 29 @?= "veintinueve"
                     ]
                 , testGroup "Prueba de numeros entre 30 y 100" $
-                    [ testCase "30" $ decenas 30 @?= "treinta"
+                    [ 
+                    testCase "30" $ decenas 30 @?= "treinta"
                     , testCase "31" $ decenas 31 @?= "treinta y uno"
                     , testCase "37" $ decenas 37 @?= "treinta y siete"
                     , testCase "40" $ decenas 40 @?= "cuarenta"
@@ -51,7 +54,8 @@ fizzBuzzSuite = testGroup "FizzBuzz tests"
                     , testCase "100" $ centenas 100 @?= "cien"
                     ]
                 , testGroup "Prueba de numeros entre 101 y 999" $
-                    [ testCase "200" $ centenas 200 @?= "doscientos"
+                    [ 
+                    testCase "200" $ centenas 200 @?= "doscientos"
                     , testCase "300" $ centenas 300 @?= "trescientos"
                     , testCase "400" $ centenas 400 @?= "cuatrocientos"
                     , testCase "500" $ centenas 500 @?= "quinientos"
@@ -63,7 +67,8 @@ fizzBuzzSuite = testGroup "FizzBuzz tests"
                     , testCase "109" $ centenas 109 @?= "ciento nueve"
                     ]
                 , testGroup "Pruebas con 1,000 y 999,999"$
-                    [ testCase "1000" $ fizzbuzz 1000 @?= "mil"
+                    [ 
+                    testCase "1000" $ fizzbuzz 1000 @?= "mil"
                     , testCase "1952" $ fizzbuzz 1952 @?= "mil novecientos cincuenta y dos"
                     , testCase "1150" $ fizzbuzz 1150 @?= "mil ciento cincuenta"
                     , testCase "7864" $ fizzbuzz 7864 @?= "siete mil ochocientos sesenta y cuatro"
@@ -79,6 +84,35 @@ fizzBuzzSuite = testGroup "FizzBuzz tests"
                     [
                       testCase "1000000" $ fizzbuzz 1000000 @?= "un millon"
                     ]
+                , testGroup "Pruebas de números primos" 
+                    [
+                      testCase "2" $ esPrimo 2 @?= True
+                      , testCase "3" $ esPrimo 3 @?= True
+                      , testCase "4" $ esPrimo 4 @?= False
+                      , testCase "5" $ esPrimo 5 @?= True
+                      , testCase "6" $ esPrimo 6 @?= False
+                      , testCase "7" $ esPrimo 7 @?= True
+                      , testCase "8" $ esPrimo 8 @?= False
+                      , testCase "9" $ esPrimo 9 @?= False
+                      , testCase "10" $ esPrimo 10 @?= False
+                      , testCase "11" $ esPrimo 11 @?= True
+                      , testCase "13" $ esPrimo 13 @?= True
+                      , testCase "29" $ esPrimo 29 @?= True
+                      , testCase "31" $ esPrimo 31 @?= True
+                      , testCase "59" $ esPrimo 59 @?= True
+                      , testCase "71" $ esPrimo 71 @?= True
+                      , testCase "97" $ esPrimo 97 @?= True
+                      , testCase "101" $ esPrimo 101 @?= True
+                      , testCase "139" $ esPrimo 139 @?= True
+                      , testCase "593" $ esPrimo 593 @?= True
+                      , testCase "971" $ esPrimo 971 @?= True
+                      , testCase "971" $ esPrimo 971 @?= True
+                      , testCase "1009" $ esPrimo 1009 @?= True
+                      , testCase "1013" $ esPrimo 1013 @?= True
+                      , testCase "9973" $ esPrimo 9973 @?= True
+                      , testCase "10037" $ esPrimo 10037 @?= True
+                      , testCase "100003" $ esPrimo 100003 @?= True
+                      , testCase "999983" $ esPrimo 999983 @?= True
+                    ]
                 ]
-
 main = defaultMain fizzBuzzSuite
