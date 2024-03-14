@@ -3,7 +3,19 @@ module FizzBuzz where
 import Data.List
 
 fizzbuzz :: Int -> String
-fizzbuzz n = defNumero n
+fizzbuzz n  
+    | isPrime n  == True = "FizzBuzz!"
+    | otherwise = nombrar n
+
+--Identificar si un numero es primo true/false
+isPrime :: Int -> Bool
+isPrime n
+    | n <= 1 = False  -- Los números menores o iguales a 1 no son primos
+    | otherwise = not $ any (\x -> n `mod` x == 0) [2..intSqrt n]
+    where
+        -- Raíz cuadrada entera
+        intSqrt :: Int -> Int
+        intSqrt = floor . sqrt . fromIntegral
 
 menorQue20 :: Int -> String
 menorQue20 n
@@ -28,16 +40,25 @@ decenas n
 centenas :: Int -> String
 centenas n
     | n == 100 = "cien"
-    | n > 100 && n <= 1000 && mod n 100 == 0 =
+    | n > 100 && n < 1000 && mod n 100 == 0 =
         answers !! (div n 100 - 1)
     | otherwise =
-        answers !! (div n 100 - 1) ++ " " ++ defNumero (mod n 100)
+        answers !! (div n 100 - 1) ++ " " ++ nombrar (mod n 100)
     where
-        answers = words ("ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos mil")
+        answers = words ("ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos")
 
-defNumero :: Int -> String
-defNumero n
+miles :: Int -> String
+miles n
+    | n == 1000 = "mil"
+    | n > 1000 && n < 2000 =
+        "mil " ++ nombrar (mod n 1000)
+    | n > 1000 && n < 1000000 =
+        nombrar (div n 1000) ++ " mil " ++ nombrar (mod n 1000)
+
+nombrar :: Int -> String
+nombrar n
     | n < 20 = menorQue20 n
     | n < 100 = decenas n
-    | n <= 1000 = centenas n
-    | otherwise = "Número fuera de rango"
+    | n < 1000 = centenas n
+    | n < 1000000 = miles n
+    | otherwise = "un millon"
