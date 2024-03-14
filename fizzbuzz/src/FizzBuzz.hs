@@ -4,12 +4,12 @@ import Data.List
 
 fizzbuzz :: Int -> String
 fizzbuzz n  
-    | isPrime n  == True = "FizzBuzz!"
+    | esPrimo n  == True = "FizzBuzz!"
     | otherwise = nombrar n
 
 --Identificar si un numero es primo true/false
-isPrime :: Int -> Bool
-isPrime n
+esPrimo :: Int -> Bool
+esPrimo n
     | n <= 1 = False  -- Los números menores o iguales a 1 no son primos
     | otherwise = not $ any (\x -> n `mod` x == 0) [2..intSqrt n]
     where

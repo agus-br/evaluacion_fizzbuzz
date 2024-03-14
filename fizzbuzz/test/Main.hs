@@ -4,46 +4,63 @@ import Test.Tasty
 import Test.Tasty.HUnit
 import FizzBuzz
 
-lessThan20Answers = words ("one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen")
-
-tensAnswers = words "twenty thirty fourty fifty sixty seventy eighty ninety"
-
 fizzBuzzSuite :: TestTree
 fizzBuzzSuite = testGroup "FizzBuzz tests"
-                [ testGroup "fizzbuzz" $
-                    [ testCase "1 is one!" $ fizzbuzz 1 @?= "one"
-                    , testCase "2 is two!" $ fizzbuzz 2 @?= "two"
-                    , testCase "3 is fizz!" $ fizzbuzz 3 @?= "fizz"
-                    , testCase "4 is four!" $ fizzbuzz 4 @?= "four"
-                    , testCase "5 is buzz!" $ fizzbuzz 5 @?= "buzz"
-                    , testCase "15 is fizzbuzz!" $ fizzbuzz 15 @?= "fizzbuzz"
-                    , testCase "18 is fizz!" $ fizzbuzz 18 @?= "fizz"
-                    , testCase "22 is twenty two!" $ fizzbuzz 22 @?= "twenty two"
-                    , testCase "25 is buzz!" $ fizzbuzz 25 @?= "buzz"
-                    , testCase "60 is fizzbuzz!" $ fizzbuzz 60 @?= "fizzbuzz"
-                    , testCase "99 is fizz!" $ fizzbuzz 99 @?= "fizz"
-                    , testCase "100 is buzz!" $ fizzbuzz 100 @?= "buzz"
+                [ testGroup "Pruba de números entre 0 y 30" $
+                    [ testCase "0" $ menorQue20 0 @?= "cero"
+                    , testCase "1" $ menorQue20 2 @?= "uno"
+                    , testCase "2" $ menorQue20 2 @?= "dos"
+                    , testCase "3" $ menorQue20 3 @?= "tres"
+                    , testCase "4" $ menorQue20 4 @?= "cuatro"
+                    , testCase "5" $ menorQue20 5 @?= "cinco"
+                    , testCase "6" $ menorQue20 6 @?= "seis"
+                    , testCase "7" $ menorQue20 7 @?= "siete"
+                    , testCase "8" $ menorQue20 8 @?= "ocho"
+                    , testCase "9" $ menorQue20 9 @?= "nueve"
+                    , testCase "10" $ menorQue20 10 @?= "diez"
+                    , testCase "11" $ menorQue20 11 @?= "once"
+                    , testCase "12" $ menorQue20 12 @?= "doce"
+                    , testCase "13" $ menorQue20 13 @?= "trece"
+                    , testCase "14" $ menorQue20 14 @?= "catorce"
+                    , testCase "15" $ menorQue20 15 @?= "quince"
+                    , testCase "20" $ decenas 20 @?= "veinte"
+                    , testCase "30" $ decenas 30 @?= "treinta"
                     ]
-                , testGroup "lessThan20" $
-                    map ( \(n, t) -> testCase (show n ++ " is " ++ t) $ lessThan20 n @?= t)
-                        (zip [1..] lessThan20Answers)
-                , testGroup "tens" $
-                    map ( \(n, t) -> testCase (show n ++ " is " ++ t) $ tens n @?= t)
-                        (zip [2..] tensAnswers)
-                , testGroup "number"
-                    [ testCase "1 is one" $ number 1 @?= "one"
-                    , testCase "5 is five" $ number 5 @?= "five"
-                    , testCase "10 is ten" $ number 10 @?= "ten"
-                    , testCase "11 is eleven" $ number 11 @?= "eleven"
-                    , testCase "19 is nineteen" $ number 19 @?= "nineteen"
-                    , testCase "20 is twenty" $ number 20 @?= "twenty"
-                    , testCase "25 is twenty five" $ number 25 @?= "twenty five"
-                    , testCase "50 is fifty" $ number 50 @?= "fifty"
-                    , testCase "59 is fifty nine" $ number 59 @?= "fifty nine"
-                    , testCase "90 is ninety" $ number 90 @?= "ninety"
-                    , testCase "91 is ninety one" $ number 91 @?= "ninety one"
-                    , testCase "99 is ninety nine" $ number 99 @?= "ninety nine"
-                    , testCase "100 is one hundred" $ number 100 @?= "one hundred"
+                , testGroup "Prueba de números entre 16 y 29" $
+                    [ testCase "16" $ menorQue20 16 @?= "diesciseis"
+                    , testCase "17" $ menorQue20 17 @?= "diescisiete"
+                    , testCase "18" $ menorQue20 18 @?= "diesciocho"
+                    , testCase "20" $ decenas 20 @?= "veinte"
+                    , testCase "21" $ decenas 21 @?= "ventiuno"
+                    , testCase "24" $ decenas 24 @?= "veinticuatro"
+                    , testCase "26" $ decenas 26 @?= "veintiseis"
+                    , testCase "27" $ decenas 27 @?= "veintisiete"
+                    , testCase "28" $ decenas 28 @?= "veintiocho"
+                    , testCase "29" $ decenas 29 @?= "veintinueve"
+                    ]
+                , testGroup "Prueba de números entre 30 y 100" $
+                    [ testCase "30" $ decenas 30 @?= "treinta"
+                    , testCase "31" $ decenas 31 @?= "treinta y uno"
+                    , testCase "37" $ decenas 37 @?= "treinta y siete"
+                    , testCase "40" $ decenas 40 @?= "cuarenta"
+                    , testCase "50" $ decenas 21 @?= "cincuenta"
+                    , testCase "60" $ decenas 24 @?= "sesenta"
+                    , testCase "70" $ decenas 26 @?= "setenta"
+                    , testCase "80" $ decenas 27 @?= "ochenta"
+                    , testCase "90" $ decenas 28 @?= "noventa"
+                    , testCase "100" $ centenas 100 @?= "cien"
+                    ]
+                , testGroup "Prueba de números entre 101 y 999" $
+                    [ testCase "200" $ centenas 200 @?= "doscientos"
+                    , testCase "300" $ centenas 300 @?= "trescientos"
+                    , testCase "400" $ centenas 400 @?= "cuatrocientos"
+                    , testCase "500" $ centenas 500 @?= "quinientos"
+                    , testCase "600" $ centenas 600 @?= "seiscientos"
+                    , testCase "700" $ centenas 700 @?= "setecientos"
+                    , testCase "800" $ centenas 800 @?= "ochocientos"
+                    , testCase "900" $ centenas 900 @?= "novecientos"
+                    , testCase "426" $ centenas 426 @?= "cuatrocientos veintiseis"
+                    , testCase "109" $ centenas 109 @?= "ciento nueve"
                     ]
                 ]
 
