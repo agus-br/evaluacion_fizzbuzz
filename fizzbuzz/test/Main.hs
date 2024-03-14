@@ -62,6 +62,23 @@ fizzBuzzSuite = testGroup "FizzBuzz tests"
                     , testCase "426" $ centenas 426 @?= "cuatrocientos veintiseis"
                     , testCase "109" $ centenas 109 @?= "ciento nueve"
                     ]
+                , testGroup "Pruebas con 1,000 y 999,999"$
+                    [ testCase "1000" $ fizzbuzz 1000 @?= "mil"
+                    , testCase "1952" $ fizzbuzz 1952 @?= "mil novecientos cincuenta y dos"
+                    , testCase "1150" $ fizzbuzz 1150 @?= "mil ciento cincuenta"
+                    , testCase "7864" $ fizzbuzz 7864 @?= "siete mil ochocientos sesenta y cuatro"
+                    , testCase "435721" $ fizzbuzz 435721 @?= "cuatrocientos treinta y cinco mil setecientos veintiuno"
+                    , testCase "999999" $ fizzbuzz 999999 @?= "novecientos noventa y nueve mil novecientos noventa y nueve"
+                    , testCase "27777" $ fizzbuzz 27777 @?= "veintisiete mil setecientos setenta y siete"
+                    , testCase "32101" $ fizzbuzz 32101 @?= "treinta y dos mil ciento uno"
+                    , testCase "56982" $ fizzbuzz 56982 @?= "cincuenta y seis mil novecientos ochenta y dos"
+                    , testCase "765432" $ fizzbuzz 765432 @?= "setecientos sesenta y cinco mil cuatrocientos treinta y dos"
+                    , testCase "888888" $ fizzbuzz 888888 @?= "ochocientos ochenta y ocho mil ochocientos ochenta y ocho"
+                    ]
+                , testGroup "Pruebas con cifras de 1,000,000" 
+                    [
+                      testCase "1000000" $ fizzbuzz 1000000 @?= "un millon"
+                    ]
                 ]
 
 main = defaultMain fizzBuzzSuite
