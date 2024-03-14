@@ -45,6 +45,14 @@ centenas n
     where
         answers = words ("ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos mil")
 
+miles :: Int -> String
+miles n
+    | n == 1000 = "mil"
+    | n > 1000 && n < 2000 =
+        "mil " ++ defNumero (mod n 1000)
+    | n > 1000 && n < 100000 =
+        defNumero (div n 1000) ++ " mil " ++ defNumero (mod n 1000)
+
 defNumero :: Int -> String
 defNumero n
     | n < 20 = menorQue20 n
