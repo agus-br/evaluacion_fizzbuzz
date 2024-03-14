@@ -6,9 +6,9 @@ import FizzBuzz
 
 fizzBuzzSuite :: TestTree
 fizzBuzzSuite = testGroup "FizzBuzz tests"
-                [ testGroup "Pruba de números entre 0 y 30" $
+                [ testGroup "Pruba de numeros entre 0 y 30" $
                     [ testCase "0" $ menorQue20 0 @?= "cero"
-                    , testCase "1" $ menorQue20 2 @?= "uno"
+                    , testCase "1" $ menorQue20 1 @?= "uno"
                     , testCase "2" $ menorQue20 2 @?= "dos"
                     , testCase "3" $ menorQue20 3 @?= "tres"
                     , testCase "4" $ menorQue20 4 @?= "cuatro"
@@ -26,31 +26,31 @@ fizzBuzzSuite = testGroup "FizzBuzz tests"
                     , testCase "20" $ decenas 20 @?= "veinte"
                     , testCase "30" $ decenas 30 @?= "treinta"
                     ]
-                , testGroup "Prueba de números entre 16 y 29" $
-                    [ testCase "16" $ menorQue20 16 @?= "diesciseis"
-                    , testCase "17" $ menorQue20 17 @?= "diescisiete"
-                    , testCase "18" $ menorQue20 18 @?= "diesciocho"
+                , testGroup "Prueba de numeros entre 16 y 29" $
+                    [ testCase "16" $ menorQue20 16 @?= "dieciseis"
+                    , testCase "17" $ menorQue20 17 @?= "diecisiete"
+                    , testCase "18" $ menorQue20 18 @?= "dieciocho"
                     , testCase "20" $ decenas 20 @?= "veinte"
-                    , testCase "21" $ decenas 21 @?= "ventiuno"
+                    , testCase "21" $ decenas 21 @?= "veintiuno"
                     , testCase "24" $ decenas 24 @?= "veinticuatro"
                     , testCase "26" $ decenas 26 @?= "veintiseis"
                     , testCase "27" $ decenas 27 @?= "veintisiete"
                     , testCase "28" $ decenas 28 @?= "veintiocho"
                     , testCase "29" $ decenas 29 @?= "veintinueve"
                     ]
-                , testGroup "Prueba de números entre 30 y 100" $
+                , testGroup "Prueba de numeros entre 30 y 100" $
                     [ testCase "30" $ decenas 30 @?= "treinta"
                     , testCase "31" $ decenas 31 @?= "treinta y uno"
                     , testCase "37" $ decenas 37 @?= "treinta y siete"
                     , testCase "40" $ decenas 40 @?= "cuarenta"
-                    , testCase "50" $ decenas 21 @?= "cincuenta"
-                    , testCase "60" $ decenas 24 @?= "sesenta"
-                    , testCase "70" $ decenas 26 @?= "setenta"
-                    , testCase "80" $ decenas 27 @?= "ochenta"
-                    , testCase "90" $ decenas 28 @?= "noventa"
+                    , testCase "50" $ decenas 50 @?= "cincuenta"
+                    , testCase "60" $ decenas 60 @?= "sesenta"
+                    , testCase "70" $ decenas 70 @?= "setenta"
+                    , testCase "80" $ decenas 80 @?= "ochenta"
+                    , testCase "90" $ decenas 90 @?= "noventa"
                     , testCase "100" $ centenas 100 @?= "cien"
                     ]
-                , testGroup "Prueba de números entre 101 y 999" $
+                , testGroup "Prueba de numeros entre 101 y 999" $
                     [ testCase "200" $ centenas 200 @?= "doscientos"
                     , testCase "300" $ centenas 300 @?= "trescientos"
                     , testCase "400" $ centenas 400 @?= "cuatrocientos"
